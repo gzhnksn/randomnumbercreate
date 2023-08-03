@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rastgele Sayı Üretme</title>
+</head>
+
+<!-- Kendime NOt -->
+<!-- Seç butonu çalışmıyor yarın bakılacak. -->
+
+
+<body>
+    <form onsubmit="sirala(event)">
+    <label for="minRange">Minimum Değer:</label><br>
+    <input type="range" id="minRange" name="min" min="0" max="100" step="1">
+    <input type="submit" value="Seç" >
+    <input type="text" id="minText" value=0>    <br>
+    <label for="maxRange">Maksimum Değer:</label><br>
+    <input type="range" id="maxRange" name="max" min="0" max="100" step="1">
+    <input type="submit" value="Seç" >
+    <input type="text" id="maxText" value="100">         <br>
+    <input type="submit" value="Üret"> 
+</form>
+
+    <hr/>
+    <label for="">Rastgele Sayı:</label>  
+    <span id="randomNumberLabel"></span>  
+
+    <script>
+        
+    
+        const minRangeInput = document.getElementById("minRange");
+        const maxRangeInput = document.getElementById("maxRange");
+        const minTextInput = document.getElementById("minText");
+        const maxTextInput = document.getElementById("maxText");
+        const randomNumberLabel = document.getElementById("randomNumberLabel");
+    
+        function sirala(e){
+            e.preventDefault();
+    
+            const min=parseInt(minRangeInput.value);
+            const max=parseInt(maxRangeInput.value);
+    
+            const random=Math.floor(Math.random() *(max-min+1))+min;
+    
+            randomNumberLabel.textContent=random;
+        }
+    
+        minRangeInput.addEventListener("input",() =>{
+            minTextInput.value=minRangeInput.value;
+        });
+        maxRangeInput.addEventListener("input",() =>{
+            maxTextInput.value=maxRangeInput.value;
+        });
+        </script>
+    
+   
+</body>
+</html>
